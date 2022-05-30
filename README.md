@@ -1,3 +1,3 @@
 # neuromodulation
 
-This is a Toy-Repo to try some things out.
+This is a toy-Repo to try some things out.
