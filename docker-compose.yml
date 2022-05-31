@@ -1,0 +1,13 @@
+server_develop:
+  privileged: true
+  build: .
+  ports:
+    - "8888:8888"
+  volumes:
+    - /var/sinz-shared:/data
+    - ../projects:/notebooks
+  env_file: .env
+  environment:
+    - DISPLAY=$DISPLAY
+  runtime: nvidia
+  shm_size: 40g
