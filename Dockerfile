@@ -6,8 +6,8 @@ FROM ${BASE_IMAGE} as base
 
 WORKDIR /src
 # clone projects from public/private github repos
-RUN git clone https://github.com/sinzlab/neuralpredictors &&\
-    git clone https://github.com/sinzlab/nnfabrik
+#RUN git clone https://github.com/sinzlab/neuralpredictors &&\
+RUN   git clone https://github.com/sinzlab/nnfabrik
 
 FROM ${BASE_IMAGE}
 COPY --from=base /src /src
@@ -15,10 +15,13 @@ COPY --from=base /src /src
 RUN python3.8 -m pip install --upgrade pip
 RUN python3.8 -m pip --no-cache-dir install hub
 
-RUN cd /src/neuralpredictors && python3.8 -m pip install --no-use-pep517 -e .
+#RUN cd /src/neuralpredictors && python3.8 -m pip install --no-use-pep517 -e .
 RUN cd /src/nnfabrik && python3.8 -m pip install --no-use-pep517 -e .
 
 ADD . /project
-RUN python3.8 -m pip install -e /project
-WORKDIR /notebooks
+RUN python3.8 -m pip install --no-use-pep517 -e /project/mei
+RUN python3.8 -m pip install --no-use-pep517 -e /project/nnvision
+RUN python3.8 -m pip install --no-use-pep517 -e /project/neuralpredictors
+RUN python3.8 -m pip install --no-use-pep517 -e /project/neuromodulation
+WORKDIR /project
 

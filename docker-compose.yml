@@ -3,12 +3,14 @@ version: '3.4'
 services:
   server_develop:
     privileged: true
-    build: .
+    build:
+      context: ../
+      dockerfile: ./neuromodulation/Dockerfile
     ports:
       - "8888:8888"
     volumes:
       - /var/sinz-shared:/data
-      - ../projects:/notebooks
+      - /home/eoffenberg/Projects:/project
     env_file: .env
     environment:
       - DISPLAY=$DISPLAY
