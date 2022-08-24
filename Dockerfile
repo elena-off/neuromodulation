@@ -16,11 +16,12 @@ RUN python3.8 -m pip install --upgrade pip
 RUN python3.8 -m pip --no-cache-dir install hub
 
 #RUN cd /src/neuralpredictors && python3.8 -m pip install --no-use-pep517 -e .
-RUN cd /src/nnfabrik && python3.8 -m pip install --no-use-pep517 -e .
+#RUN cd /src/nnfabrik && python3.8 -m pip install --no-use-pep517 -e .
 
 ADD . /project
 RUN python3.8 -m pip install --no-use-pep517 -e /project/mei
 RUN python3.8 -m pip install --no-use-pep517 -e /project/nnvision
+RUN python3.8 -m pip install --no-use-pep517 -e /project/nnfabrik #added this rather than line 19
 RUN python3.8 -m pip install --no-use-pep517 -e /project/neuralpredictors
 RUN python3.8 -m pip install --no-use-pep517 -e /project/neuromodulation
 WORKDIR /project
