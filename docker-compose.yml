@@ -16,3 +16,21 @@ services:
       - DISPLAY=$DISPLAY
     runtime: nvidia
     shm_size: 40g
+
+  neuromod_production:
+    privileged: true
+    build:
+      context: ../
+      dockerfile: ./neuromodulation/Dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - /var/sinz-shared:/data
+      - /home/eoffenberg/Projects:/project
+    env_file: .env
+    environment:
+      - DISPLAY=$DISPLAY
+    runtime: nvidia
+    shm_size: 40g
+    entrypoint: /usr/local/bin/python3
+    command: ./neuromodulation/run.py

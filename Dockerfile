@@ -14,6 +14,9 @@ COPY --from=base /src /src
 
 RUN python3.8 -m pip install --upgrade pip
 RUN python3.8 -m pip --no-cache-dir install hub
+RUN pip install git+https://github.com/sacadena/ptrnets.git@6f459a130ff2fb1a73f29d933e6bea5b435341e7
+RUN pip install git+https://github.com/dicarlolab/CORnet
+RUN python3.8 -m pip install einops
 
 #RUN cd /src/neuralpredictors && python3.8 -m pip install --no-use-pep517 -e .
 #RUN cd /src/nnfabrik && python3.8 -m pip install --no-use-pep517 -e .
