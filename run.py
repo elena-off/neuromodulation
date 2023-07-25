@@ -48,10 +48,10 @@ class TrainedModelDJ(TrainedModelBase):
     seed_table = Seed
     user_table = Fabrikant
 
-model_hashes = (Model & 'model_ts > "2023-01-17"' & 'model_ts < "2023-01-18"').fetch("model_hash")
+model_hashes = (Model & 'model_ts > "2023-04-17"' & 'model_ts < "2023-04-19"').fetch("model_hash")
 other_rests = { 'dataset_hash': '0d73713f106d71e0920e07ae1b818896',
-                'trainer_hash': '11b0d8b378d05b7f33cc41a9e345574a', 
-                'seed':'3000'} 
+                'trainer_hash': '11b0d8b378d05b7f33cc41a9e345574a',
+                'seed':'5000'}
 restrictions = dj.AndList([[dict(model_hash = i) for i in model_hashes], other_rests])
 
 TrainedModelDJ().populate(restrictions, display_progress=True,reserve_jobs=True) 
